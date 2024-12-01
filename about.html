@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        /* General Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; }
+        .main-header { display: flex; justify-content: space-between; align-items: center; background-color: #007bff; padding: 15px 20px; color: white; position: sticky; top: 0; z-index: 1000; }
+        .main-header .logo { font-size: 24px; font-weight: bold; }
+        .nav-links a { text-decoration: none; color: white; margin: 0 10px; transition: color 0.3s; }
+        .nav-links a:hover { color: #ffcc00; }
+        footer { text-align: center; padding: 4px 20px; background-color: #007bff; color: white; position: fixed; bottom: 0px; width: 100%; }
+        .about-section { padding: 20px; text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8; }
+        .about-section p { font-size: 18px; margin-bottom: 20px; }
+        
+        /* Team Section Styles */
+        .team-section { padding: 20px; text-align: center; }
+        .team-section h2 { margin-bottom: 20px; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .team-member { border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        .team-member img { width: 100%; border-radius: 50%; margin-bottom: 10px; }
+        .team-member h3 { font-size: 18px; margin-bottom: 5px; }
+        .team-member p { font-size: 14px; color: #666; }
+
+        /* Call to Action Styles */
+        .cta { margin: 40px 0; padding: 20px; background-color: #007bff; color: white; border-radius: 5px; }
+        .cta a { color: #ffcc00; font-weight: bold; text-decoration: none; }
+        .cta a:hover { text-decoration: underline; }
+
+        /* Testimonial Section Styles */
+        .testimonial-section { padding: 20px; text-align: center; background-color: #f1f1f1; margin: 20px 0; }
+        .testimonial-section h2 { margin-bottom: 20px; }
+        .testimonial { font-style: italic; margin: 15px 0; }
+        .testimonial-author { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">UniShop</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <section class="about-section">
+        <h1>About Us</h1>
+        <p>Welcome to MyShop! We are committed to bringing you high-quality products at affordable prices. 
+           Our mission is to make shopping easy, enjoyable, and accessible for everyone.</p>
+        <p>Founded by a group of passionate individuals, we believe in customer satisfaction and strive to provide the best shopping experience. 
+           Our core values include integrity, quality, and service. We continuously work to improve our offerings and welcome feedback from our customers.</p>
+    </section>
+
+    <section class="testimonial-section">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial">
+            <p>"MyShop has changed the way I shop online! Great prices and excellent service."</p>
+            <div class="testimonial-author">- Alex K.</div>
+        </div>
+        <div class="testimonial">
+            <p>"I love the variety of products available. Highly recommend!"</p>
+            <div class="testimonial-author">- Jamie R.</div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="images/2023-10-23-13-56-05-657.jpg" alt="Team Member 1">
+                <h3>Eric Andoh</h3>
+                <p>CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="images/IMG-20230826-WA0014.jpg" alt="Team Member 2">
+                <h3>Mavis Kwofie</h3>
+                <p>Product Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="images/233545844080_status_7c1ec0aa547a4b6999163b96cfc8ae96.jpg" alt="Team Member 3">
+                <h3>Sampson Denyam</h3>
+                <p>Customer Support</p>
+            </div>
+            <div class="team-member">
+                <img src="images/FB_IMG_1689752240721.jpg" alt="Team Member 4">
+                <h3>Gifty Sammah</h3>
+                <p>Marketing Specialist</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta">
+        <p>Ready to shop? Check out our <a href="products.html">products!</a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 UniShop. All rights reserved.</p>
+        <div>
+            <a href="https://www.facebook.com/eric.andoh.75641?mibextid=ZbWKwL" target="_blank" style="color: white; margin: 0 10px;">Facebook</a>
+            <a href="https://wa.link/zwhfb8" target="_blank" style="color: white; margin: 0 10px;">WhatsApp</a>
+            <a href="https://www.instagram.com/ericushercules005?igsh=YzljYTk1ODg3Zg==" target="_blank" style="color: white; margin: 0 10px;">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>

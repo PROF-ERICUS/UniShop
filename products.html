@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        /* General Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .main-header { display: flex; justify-content: space-between; align-items: center; background-color: #007bff; padding: 15px 20px; color: white; position: sticky; top: 0; z-index: 1000; }
+        .main-header .logo { font-size: 24px; font-weight: bold; }
+        .nav-links a { text-decoration: none; color: white; margin: 0 10px; transition: color 0.3s; }
+        .nav-links a:hover { color: #ffcc00; }
+        .products-section { padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; }
+        .product { border: 1px solid #ddd; padding: 10px; margin: 10px; width: 200px; text-align: center; }
+        .product img { width: 100%; height: auto; } /* Responsive image */
+        .product button { padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer; transition: background 0.3s; }
+        .product button:hover { background-color: #0056b3; }
+        .cart-section { margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; }
+        .cart-item { display: flex; justify-content: space-between; padding: 5px 0; }
+        footer { text-align: center; padding: 10px 20px; background-color: #007bff; color: white; position: relative; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">UniShop</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <section class="products-section">
+        <h1>Our Products</h1>
+        <div class="product">
+            <img src="images/3pcs_Set Fashionable Simple Quartz Watch Matching Rhinestone Love Heart Bracelets For Women.jpg" alt="Product 1">
+            <p>A beautiful set of fashionable quartz watches and matching bracelets, perfect for any occasion.</p>
+            <h2>Product 1</h2>
+            <p>Price: $20.00</p>
+            <input type="number" id="quantity1" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 1', 20.00, document.getElementById('quantity1').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/iphone.jpg" alt="Product 2">
+            <p>The latest smartphone with high performance and sleek design, perfect for your daily needs.</p>
+            <h2>Product 2</h2>
+            <p>Price: $30.00</p>
+            <input type="number" id="quantity2" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 2', 30.00, document.getElementById('quantity2').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/RC1WD Magnetic Case for Samsung Galaxy A15, Samsung A15 5G Case with Screen Protector, [Military-Grade Drop Protection] Transparent Back Protective Phone Case Shockproof for Samsung A15 (Light Blue).jpg" alt="Product 3">
+            <p>A durable and stylish case for your Samsung Galaxy A15, providing military-grade protection.</p>
+            <h2>Product 3</h2>
+            <p>Price: $40.00</p>
+            <input type="number" id="quantity3" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 3', 40.00, document.getElementById('quantity3').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/The best laptops you can get.jpg" alt="Product 4">
+            <p>High-performance laptops designed for both work and play, equipped with the latest technology.</p>
+            <h2>Product 4</h2>
+            <p>Price: $50.00</p>
+            <input type="number" id="quantity4" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 4', 50.00, document.getElementById('quantity4').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/kwmobile Case Compatible with Samsung Galaxy A32 5G Case - TPU Silicone Phone Cover with Soft Finish - Coconut Swirl.jpg" alt="Product 5">
+            <p>A stylish and protective silicone case for your Samsung Galaxy A32 5G, featuring a unique design.</p>
+            <h2>Product 5</h2>
+            <p>Price: $60.00</p>
+            <input type="number" id="quantity5" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 5', 60.00, document.getElementById('quantity5').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/The High Standard Automatic Watch for Men_ Quality and Style in One.jpg" alt="Product 6">
+            <p>Elegant automatic watch for men, combining quality craftsmanship with a stylish design.</p>
+            <h2>Product 6</h2>
+            <p>Price: $70.00</p>
+            <input type="number" id="quantity6" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 6', 70.00, document.getElementById('quantity6').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/Stylish Multi-Functional Laptop Handbag with Concealed Strap - Grey _ 16_1 inch.jpg" alt="Product 7">
+            <p>A multi-functional laptop handbag with a concealed strap, perfect for professionals on the go.</p>
+            <h2>Product 7</h2>
+            <p>Price: $80.00</p>
+            <input type="number" id="quantity7" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 7', 80.00, document.getElementById('quantity7').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/Restored Dell XPS 9720 Laptop (2022) 17_ Fhd+ Core i7 - 1TB SSD - 32gb RAM - RTX 3050 14 Cores @ 4_7 GHz - 12th Gen CPU (Refurbished), Silver.jpg" alt="Product 8">
+            <p>Refurbished Dell XPS 9720 laptop with high specifications, ideal for gaming and productivity.</p>
+            <h2>Product 8</h2>
+            <p>Price: $90.00</p>
+            <input type="number" id="quantity8" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 8', 90.00, document.getElementById('quantity8').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/Brown Orchid Rose Edition 80ml by Fragrance World.jpg" alt="Product 9">
+            <p>A captivating fragrance that combines floral notes with a hint of elegance, perfect for any occasion.</p>
+            <h2>Product 9</h2>
+            <p>Price: $90.00</p>
+            <input type="number" id="quantity9" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 9', 90.00, document.getElementById('quantity9').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/Yara Lattafa Yara Perfume By Lattafa Perfume New Sealed Fragrance 100 ML 3_4OZ  _ eBay.jpg" alt="Product 10">
+            <p>An exquisite perfume with a rich aroma that embodies elegance and sophistication.</p>
+            <h2>Product 10</h2>
+            <p>Price: $90.00</p>
+            <input type="number" id="quantity10" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 10', 90.00, document.getElementById('quantity10').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/cotton linen temperament round neck long sleeve mini dress.jpg" alt="Product 11">
+            <h2>Product 11</h2>
+            <p>Price: $90.00</p>
+            <input type="number" id="quantity11" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 11', 90.00, document.getElementById('quantity11').value)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="images/Olivia Mark - Elegante Vestido Negro de Volantes sin Tirantes con Diseño Sólido de Parches y Falda de Un Paso.jpg" alt="Product 12">
+            <h2>Product 12</h2>
+            <p>Price: $90.00</p>
+            <input type="number" id="quantity11" value="1" min="1" max="10">
+            <button onclick="addToCart('Product 12', 90.00, document.getElementById('quantity12').value)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div class="cart-section">
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <h3 id="totalPrice">Total Price: $0.00</h3>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 UniShop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addToCart(productName, productPrice, quantity) {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProduct = cartItems.find(item => item.name === productName);
+
+            if (existingProduct) {
+                existingProduct.quantity += parseInt(quantity);
+            } else {
+                cartItems.push({ name: productName, price: productPrice, quantity: parseInt(quantity) });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            updateCartDisplay();
+            alert(`${productName} has been added to your cart.`);
+        }
+
+        function updateCartDisplay() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsDiv = document.getElementById('cartItems');
+            cartItemsDiv.innerHTML = '';
+
+            let total = 0;
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                cartItemsDiv.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name} (x${item.quantity}) - $${itemTotal.toFixed(2)}</span>
+                        <button onclick="removeFromCart('${item.name}')">Remove</button>
+                    </div>
+                `;
+            });
+            document.getElementById('totalPrice').innerText = `Total Price: $${total.toFixed(2)}`;
+        }
+
+        function removeFromCart(productName) {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const updatedCart = cartItems.filter(item => item.name !== productName);
+
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            updateCartDisplay();
+        }
+
+        // Call this to display cart on page load
+        updateCartDisplay();
+    </script>
+</body>
+</html>

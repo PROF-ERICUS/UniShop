@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        /* General Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .main-header { display: flex; justify-content: space-between; align-items: center; background-color: #007bff; padding: 15px 20px; color: white; position: sticky; top: 0; z-index: 1000; }
+        .main-header .logo { font-size: 24px; font-weight: bold; }
+        .nav-links a { text-decoration: none; color: white; margin: 0 10px; transition: color 0.3s; }
+        .nav-links a:hover { color: #ffcc00; }
+        footer { text-align: center; padding: 0px 10px; background-color: #007bff; color: white; position: fixed; bottom: 0; width: 100%; }
+        .contact-section { padding: 20px; max-width: 600px; margin: 0 auto; }
+        .contact-section form { display: flex; flex-direction: column; }
+        .contact-section label { margin-bottom: 5px; font-weight: bold; }
+        .contact-section input, .contact-section textarea, .contact-section button { margin-bottom: 15px; padding: 10px; font-size: 16px; border: 1px solid #ddd; border-radius: 5px; }
+        .contact-section button { background-color: #007bff; color: white; border: none; cursor: pointer; transition: background 0.3s; }
+        .contact-section button:hover { background-color: #0056b3; }
+        
+        /* Additional Information Styles */
+        .contact-info { margin: 20px 0; }
+        .contact-info p { margin: 5px 0; }
+
+        /* Map Styles */
+        .map-container { margin-top: 20px; }
+        iframe { width: 100%; height: 300px; border: none; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">UniShop</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+        <h1>Contact Us</h1>
+        <form action="https://formspree.io/f/xovqpoky" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="contact-info">
+            <h2>Additional Contact Information</h2>
+            <p>Phone: +233 542 044 490</p>
+            <p>Email: ericandoh005@gmail.com</p>
+            <p>Address: 123 UniShop Lane, Accra, Ghana</p>
+        </div>
+
+        <div class="map-container">
+            <h2>Our Location</h2>
+            <p>Accra Tesano</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 UniShop. All rights reserved.</p>
+        <div>
+            <a href="https://www.facebook.com/eric.andoh.75641?mibextid=ZbWKwL" target="_blank" style="color: white; margin: 0 10px;">Facebook</a>
+            <a href="https://wa.link/zwhfb8" target="_blank" style="color: white; margin: 0 10px;">WhatsApp</a>
+            <a href="https://www.instagram.com/ericushercules005?igsh=YzljYTk1ODg3Zg==" target="_blank" style="color: white; margin: 0 10px;">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>

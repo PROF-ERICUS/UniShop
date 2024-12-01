@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Cover Page - UniShop</title>
+    <meta name="description" content="Welcome to MyShop, your one-stop online shop for everything you need!">
+    <style>
+        /* General Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0;
+            background-image: url(images/mail.jpg); 
+        }
+
+
+        /* Header Styles */
+        .main-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background-color: #007bff; 
+            padding: 15px 20px; 
+            color: white; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .main-header .logo { font-size: 24px; font-weight: bold; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: white; 
+            margin: 0 10px; 
+            transition: color 0.3s; 
+        }
+        .nav-links a:hover { 
+            color: #ffcc00; 
+            text-decoration: underline; 
+        }
+
+        /* Footer Styles */
+        footer { 
+            text-align: center; 
+            padding: 10px 20px; 
+            background-color: #007bff; 
+            color: white; 
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+        }
+
+        /* Cover Section Styles */
+        .cover-section { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            text-align: center; 
+            background: #333; 
+            color: white; 
+            position: relative; 
+        }
+        .cover-section h1 { font-size: 50px; margin-bottom: 20px; }
+        .cover-section p { font-size: 18px; margin-bottom: 30px; }
+        .cover-section .btn { 
+            background-color: #ffcc00; 
+            color: #333; 
+            text-decoration: none; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            font-size: 18px; 
+            transition: background 0.3s, transform 0.3s; 
+        }
+        .cover-section .btn:hover { 
+            background-color: #e0b800; 
+            transform: scale(1.05); 
+        }
+
+        /* Image Container Styles */
+        .image-container {
+            display: flex;
+            overflow: hidden; /* Hide overflow to keep a clean look */
+            width: 90%; 
+            max-width: 1000px; 
+            height: 250px; 
+            margin: 20px auto; 
+            border: 2px solid #ddd; 
+            border-radius: 10px; 
+            background-color: #f9f9f9; 
+            position: relative;
+        }
+
+        .scroll-images {
+            display: flex;
+            animation: scroll 20s linear infinite; /* Infinite scrolling animation */
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0); /* Start at the beginning */
+            }
+            to {
+                transform: translateX(-100%); /* Scroll to the end */
+            }
+        }
+
+        /* Individual Image Styles */
+        .cover-image {
+            min-width: 300px; /* Adjust for visible width */
+            height: 100%; 
+            object-fit: cover; 
+            margin-right: 10px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .cover-section h1 { font-size: 36px; }
+            .cover-section p { font-size: 16px; }
+            .cover-section .btn { padding: 8px 16px; font-size: 16px; }
+            .cover-image { min-width: 200px; } 
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">UniShop</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <section class="cover-section">
+        <h1>Welcome to UniShop</h1>
+        <p>Your one-stop online shop for everything you need!</p>
+        <a href="products.html" class="btn">Shop Now</a>
+        
+        <!-- Image Container -->
+        <div class="image-container">
+            <div class="scroll-images">
+                <img src="images/2023-10-23-13-56-05-657.jpg" alt="Shopping Image 1" class="cover-image" />
+                <img src="images/3pcs_Set Fashionable Simple Quartz Watch Matching Rhinestone Love Heart Bracelets For Women.jpg" alt="Shopping Image 2" class="cover-image" />
+                <img src="images/IMG-20230826-WA0014.jpg" alt="Shopping Image 3" class="cover-image" />
+                <img src="images/FB_IMG_1689752240721.jpg" alt="Shopping Image 4" class="cover-image" />
+                <img src="images/iphone.jpg" alt="Shopping Image 5" class="cover-image" />
+                <!-- Duplicate images for seamless scrolling -->
+                <img src="images/Restored Dell XPS 9720 Laptop (2022) 17_ Fhd+ Core i7 - 1TB SSD - 32gb RAM - RTX 3050 14 Cores @ 4_7 GHz - 12th Gen CPU (Refurbished), Silver.jpg" alt="Shopping Image 5" class="cover-image" />
+                <img src="images/233545844080_status_7c1ec0aa547a4b6999163b96cfc8ae96.jpg" alt="Shopping Image 6" class="cover-image" />
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 UniShop. All rights reserved.</p>
+        <div>
+            <a href="https://www.facebook.com/eric.andoh.75641?mibextid=ZbWKwL" target="_blank" style="color: white; margin: 0 10px;">Facebook</a>
+            <a href="https://wa.link/zwhfb8" target="_blank" style="color: white; margin: 0 10px;">WhatsApp</a>
+            <a href="https://www.instagram.com/ericushercules005?igsh=YzljYTk1ODg3Zg==" target="_blank" style="color: white; margin: 0 10px;">Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        /* General Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .main-header { display: flex; justify-content: space-between; align-items: center; background-color: #007bff; padding: 15px 20px; color: white; position: sticky; top: 0; z-index: 1000; }
+        .main-header .logo { font-size: 24px; font-weight: bold; }
+        .nav-links a { text-decoration: none; color: white; margin: 0 10px; transition: color 0.3s; }
+        .nav-links a:hover { color: #ffcc00; }
+        footer { text-align: center; padding: 10px 20px; background-color: #007bff; color: white; position: fixed; bottom: 0; width: 100%; }
+        .checkout-section { padding: 20px; max-width: 600px; margin: 0 auto; }
+        .checkout-section h1 { margin-bottom: 20px; }
+        .checkout-item { display: flex; justify-content: space-between; padding: 5px 0; }
+        .total-price { font-weight: bold; margin-top: 20px; }
+        .checkout-section button { padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer; transition: background 0.3s; }
+        .checkout-section button:hover { background-color: #0056b3; }
+        .payment-methods { margin: 20px 0; }
+        .payment-methods label { margin-right: 10px; }
+        .credit-card { display: none; margin-top: 20px; }
+        .error-message { color: red; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">UniShop</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart (<span id="itemCount">0</span>)</a>
+        </nav>
+    </header>
+
+    <section class="checkout-section">
+        <h1>Checkout Summary</h1>
+        <div id="checkoutItems"></div>
+        <div class="total-price" id="totalPrice">Total Price: $0.00</div>
+        <div class="delivery-fee" id="deliveryFee">Delivery Fee: $5.00</div>
+        <div class="final-total" id="finalTotal">Final Total: $0.00</div>
+
+        <h2>Payment Method</h2>
+        <div class="payment-methods">
+            <label>
+                <input type="radio" name="paymentMethod" value="credit-card" checked onchange="togglePaymentFields()">
+                Credit Card
+            </label>
+            <label>
+                <input type="radio" name="paymentMethod" value="momo" onchange="togglePaymentFields()">
+                MTN Mobile Money (MoMo)
+            </label>
+        </div>
+
+        <div class="credit-card" id="creditCardFields">
+            <h3>Credit Card Details</h3>
+            <label for="cardNumber">Card Number <small>(e.g., 1234 5678 9012 3456)</small></label>
+            <input type="text" id="cardNumber" name="cardNumber" required placeholder="1234 5678 9012 3456">
+            <div class="error-message" id="cardErrorMessage"></div>
+
+            <label for="cardName">Cardholder Name</label>
+            <input type="text" id="cardName" name="cardName" required placeholder="John Doe">
+
+            <label for="expiryDate">Expiry Date (MM/YY)</label>
+            <input type="text" id="expiryDate" name="expiryDate" required placeholder="MM/YY">
+
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" required placeholder="123">
+        </div>
+
+        <button onclick="placeOrder()">Place Order</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 UniShop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const DELIVERY_FEE = 5.00; // Fixed delivery fee
+
+        function displayCheckoutSummary() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const checkoutItemsDiv = document.getElementById('checkoutItems');
+            checkoutItemsDiv.innerHTML = '';
+
+            let total = 0;
+            cartItems.forEach(item => {
+                total += item.price * item.quantity;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'checkout-item';
+                itemDiv.innerHTML = `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
+                checkoutItemsDiv.appendChild(itemDiv);
+            });
+
+            // Calculate total price including delivery fee
+            const finalTotal = total + DELIVERY_FEE;
+            document.getElementById('totalPrice').innerText = `Total Price: $${total.toFixed(2)}`;
+            document.getElementById('deliveryFee').innerText = `Delivery Fee: $${DELIVERY_FEE.toFixed(2)}`;
+            document.getElementById('finalTotal').innerText = `Final Total: $${finalTotal.toFixed(2)}`;
+            document.getElementById('itemCount').innerText = cartItems.reduce((sum, item) => sum + item.quantity, 0) || 0;
+
+            if (cartItems.length === 0) {
+                checkoutItemsDiv.innerHTML = '<p>Your cart is empty. Please add items before checking out.</p>';
+                document.getElementById('totalPrice').innerText = 'Total Price: $0.00';
+                document.getElementById('deliveryFee').innerText = 'Delivery Fee: $0.00';
+                document.getElementById('finalTotal').innerText = 'Final Total: $0.00';
+            }
+        }
+
+        function togglePaymentFields() {
+            const creditCardFields = document.getElementById('creditCardFields');
+            const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            creditCardFields.style.display = selectedPaymentMethod === 'credit-card' ? 'block' : 'none';
+        }
+
+        function validateCreditCard(number) {
+            // Simple Luhn algorithm to validate credit card number (basic validation)
+            const sum = (num) => num.split('').reverse().reduce((acc, digit, idx) => {
+                digit = Number(digit);
+                if (idx % 2 === 1) digit *= 2;
+                if (digit > 9) digit -= 9;
+                return acc + digit;
+            }, 0);
+            return sum(number) % 10 === 0;
+        }
+
+        function placeOrder() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cartItems.length === 0) {
+                alert("Your cart is empty. Please add items before placing an order.");
+                return;
+            }
+
+            const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+            if (selectedPaymentMethod === 'credit-card') {
+                const cardNumber = document.getElementById('cardNumber').value.replace(/\s+/g, ''); // Remove spaces
+                const cardName = document.getElementById('cardName').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+                const errorMessageDiv = document.getElementById('cardErrorMessage');
+                errorMessageDiv.innerText = ''; // Clear previous error message
+
+                // Validate credit card format (simple check for length and digits)
+                if (!/^\d{16}$/.test(cardNumber)) {
+                    errorMessageDiv.innerText = "Invalid credit card number. Please enter a 16-digit number without spaces.";
+                    return;
+                }
+
+                if (!validateCreditCard(cardNumber)) {
+                    errorMessageDiv.innerText = "Invalid credit card number. Please check your number.";
+                    return;
+                }
+
+                alert(`Order placed successfully with credit card: ${cardNumber}. Your order will be processed shortly.`);
+            } else {
+                let phoneNumber = prompt("Enter your MTN MoMo number (10 digits):");
+                
+                // Validate MTN MoMo number: Must be exactly 10 digits
+                if (!/^\d{10}$/.test(phoneNumber)) {
+                    alert("Invalid MTN MoMo number. Please enter a valid 10-digit number.");
+                    return; // Exit the function if the input is invalid
+                }
+
+                // Optional: Check if the phone number starts with valid MTN prefixes (e.g., 024, 054, etc.)
+                const validPrefixes = ['024', '054', '059', '055']; // Add any additional valid prefixes
+                const prefix = phoneNumber.slice(0, 3);
+                if (!validPrefixes.includes(prefix)) {
+                    alert("Invalid MTN MoMo number. Please enter a number starting with a valid MTN prefix.");
+                    return; // Exit if the prefix is not valid
+                }
+
+                alert(`Order placed successfully using MTN MoMo with number: ${phoneNumber}. Your order will be processed shortly.`);
+            }
+
+            // Clear the cart after placing the order
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html'; // Redirect to home page or another page after order
+        }
+
+        // Display checkout summary on page load
+        displayCheckoutSummary();
+    </script>
+</body>
+</html>
