@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - UniShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Create Account</h2>
+        <p class="form-subtitle">Sign up to start shopping.</p>
+        <form id="signupForm" action="php/signup.php" method="POST" onsubmit="return validateSignUp()">
+            <div class="form-group">
+                <input type="text" id="signupName" name="name" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="signupEmail" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="signupPassword" name="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+            <div class="form-footer">
+                <a href="index.html">Back to Login</a>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
